@@ -4,7 +4,22 @@
 #include <gtkmm.h>
 #include <vte/vte.h>
 
-Gtk::Window create_main_window(std::string title, std::string name);
-Glib::RefPtr<Gtk::Application> create_main_application(std::string application_id);
+#include "configuration.hpp"
+#include "terminal-widget.hpp"
+#include "terminal-settings.hpp"
+
+class Application
+{
+public:
+    Application(const Configuration &config)
+        : config(config)
+    {
+    }
+
+    int run();
+
+private:
+    const Configuration &config;
+};
 
 #endif // APPLICATION_HPP

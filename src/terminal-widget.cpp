@@ -1,7 +1,7 @@
 
 #include "terminal-widget.hpp"
 
-VteTerminal *add_vte_terminal_to_app_window(Gtk::Window &window, Glib::RefPtr<Gtk::Application> app)
+VteTerminal *add_vte_terminal_to_app_window(Gtk::Window &window, const Glib::RefPtr<Gtk::Application> app)
 {
     auto terminal = vte_terminal_new();
     window.add(*Glib::wrap(GTK_WIDGET(terminal)));
@@ -16,9 +16,9 @@ VteTerminal *add_vte_terminal_to_app_window(Gtk::Window &window, Glib::RefPtr<Gt
     return VTE_TERMINAL(terminal);
 }
 
-void run_command_in_terminal(VteTerminal *terminal, std::string command)
+void run_command_in_terminal(VteTerminal *terminal, const Configuration &config)
 {
-    const char *command_array[] = {command.c_str(), nullptr};
+    const char *command_array[] = {config.console_command.c_str(), nullptr};
     vte_terminal_spawn_async(
         terminal,
         VTE_PTY_DEFAULT,
