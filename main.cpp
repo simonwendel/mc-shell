@@ -1,4 +1,3 @@
-// #include "main.hpp"
 #include "application.hpp"
 #include "terminal-widget.hpp"
 #include "terminal-settings.hpp"
