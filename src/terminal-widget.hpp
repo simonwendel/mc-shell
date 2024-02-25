@@ -3,6 +3,7 @@
 
 #include <gtkmm.h>
 #include <vte/vte.h>
+
 #include "configuration.hpp"
 
 void run_command_in_terminal(VteTerminal *terminal, const Configuration &config);
