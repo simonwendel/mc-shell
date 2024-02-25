@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(mc-shell)
 
-file(GLOB SOURCES "*.cpp" "*.h")
+file(GLOB SOURCES "src/*.cpp" "src/*.h")
 add_executable(mc-shell ${SOURCES})
 
 set_target_properties(mc-shell PROPERTIES
