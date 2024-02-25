@@ -9,10 +9,9 @@ int Application::run()
     auto app = create_main_application(config.application_id);
     auto window = create_main_window(config.window_title, config.window_name);
 
+    auto settings = DefaultTerminalSettingsFactory::create();
     auto terminal = add_vte_terminal_to_app_window(window, app);
-    clone_terminal_colors_to_vte(terminal);
-    clone_terminal_font_to_vte(terminal);
-    clone_terminal_size_to_vte(terminal);
+    settings.apply_to(terminal);
 
     run_command_in_terminal(terminal, config);
 
