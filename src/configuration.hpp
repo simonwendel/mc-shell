@@ -7,11 +7,10 @@ class Configuration
 {
 public:
     const std::string window_title;
-    const std::string console_command;
     const std::string window_name;
     const std::string application_id;
 
-    Configuration(const std::string &window_title, const std::string &console_command);
+    Configuration(const std::string &window_title);
 };
 
 #endif // CONFIGURATION_HPP

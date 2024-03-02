@@ -8,7 +8,7 @@ const std::string CONSOLE_COMMAND = "/usr/bin/mc";
 
 int main(int argc, char *argv[])
 {
-    Configuration config(WINDOW_TITLE, CONSOLE_COMMAND);
+    Configuration config(WINDOW_TITLE);
     Application app(config);
-    return app.run();
+    return app.run(CONSOLE_COMMAND);
 }

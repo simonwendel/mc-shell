@@ -1,26 +1,23 @@
-
 #include "terminal-widget.hpp"
 
-VteTerminal *add_vte_terminal_to_app_window(Gtk::Window &window, const Glib::RefPtr<Gtk::Application> app)
+void apply_settings(VteTerminal *terminal, TerminalSettings &settings);
+
+void connect_exit_signal(GtkWidget *terminal, Gtk::Window &window);
+
+void TerminalWidget::add_to(Gtk::Window &window)
 {
-    auto terminal = vte_terminal_new();
-    window.add(*Glib::wrap(GTK_WIDGET(terminal)));
-    g_signal_connect(
-        terminal,
-        "child-exited",
-        G_CALLBACK(+[](VteTerminal *, int, gpointer user_data)
-                   {
-                       static_cast<Gtk::Application *>(user_data)->quit();
-                   }),
-        app.get());
-    return VTE_TERMINAL(terminal);
+    auto widget = vte_terminal_new();
+    window.add(*Glib::wrap(GTK_WIDGET(widget)));
+    connect_exit_signal(widget, window);
+    this->terminal = VTE_TERMINAL(widget);
+    apply_settings(terminal, settings);
 }
 
-void run_command_in_terminal(VteTerminal *terminal, const Configuration &config)
+void TerminalWidget::run(std::string command)
 {
-    const char *command_array[] = {config.console_command.c_str(), nullptr};
+    const char *command_array[] = {command.c_str(), nullptr};
     vte_terminal_spawn_async(
-        terminal,
+        this->terminal,
         VTE_PTY_DEFAULT,
         nullptr,
         const_cast<char **>(command_array),
@@ -31,4 +28,24 @@ void run_command_in_terminal(VteTerminal *terminal, const Configuration &config)
         -1,
         nullptr,
         nullptr, nullptr);
+}
+
+void apply_settings(VteTerminal *terminal, TerminalSettings &settings)
+{
+    settings.apply_to(terminal);
+}
+
+void connect_exit_signal(GtkWidget *widget, Gtk::Window &window)
+{
+    g_signal_connect(
+        widget,
+        "child-exited",
+        G_CALLBACK(
+            +[](GtkWidget *, int, gpointer user_data)
+            {
+                auto window = static_cast<Gtk::Window *>(user_data);
+                auto app = window->property_application().get_value();
+                app->quit();
+            }),
+        &window);
 }

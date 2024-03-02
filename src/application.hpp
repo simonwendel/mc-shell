@@ -16,7 +16,7 @@ public:
     {
     }
 
-    int run();
+    int run(std::string command);
 
 private:
     const Configuration &config;
