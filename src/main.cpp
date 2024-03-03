@@ -1,5 +1,5 @@
 #include "application.hpp"
-#include "constants.h"
+#include "constants.hpp"
 #include "configuration.hpp"
 #include "terminal-widget.hpp"
 #include "terminal-settings.hpp"

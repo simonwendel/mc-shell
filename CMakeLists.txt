@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
-
 project(mc-shell)
+
+if(NOT DEFINED MC_PATH)
+    set(MC_PATH "/usr/bin/mc" CACHE STRING "Midnight Commander binary path" FORCE)
+endif()
+
+find_program(MC "${MC_PATH}" REQUIRED)
+
+message(STATUS "Using Midnight Commander binary: ${MC}")
+configure_file("${CMAKE_CURRENT_LIST_DIR}/src/constants-impl.hpp.in" "${CMAKE_CURRENT_LIST_DIR}/src/constants-impl.hpp" @ONLY)
 
 file(GLOB SOURCES "src/*.cpp" "src/*.h")
 add_executable(mc-shell ${SOURCES})
