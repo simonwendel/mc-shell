@@ -2,3 +2,4 @@
 !.vscode/settings.json
 build/
 constants-impl.hpp
+mc-shell.desktop

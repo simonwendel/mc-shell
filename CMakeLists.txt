@@ -13,6 +13,10 @@ configure_file(
     "${CMAKE_BINARY_DIR}/src/constants-impl.hpp" 
     @ONLY)
 
+configure_file(
+    "${CMAKE_SOURCE_DIR}/install/mc-shell.desktop.in" 
+    "${CMAKE_BINARY_DIR}/install/mc-shell.desktop" 
+    @ONLY)
 
 file(GLOB SOURCES "src/*.cpp" "src/*.hpp" "${CMAKE_BINARY_DIR}/src/*.hpp")
 add_executable(mc-shell ${SOURCES})

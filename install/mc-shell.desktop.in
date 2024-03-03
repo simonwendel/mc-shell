@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MC Shell
+Comment=File manager
+Exec=@CMAKE_INSTALL_PREFIX@/bin/mc-shell
+Icon=MidnightCommander
+Terminal=false
+Type=Application
+Categories=Utility;FileManager;System;FileTools;
+Keywords=file manager;midnight commander;mc;
