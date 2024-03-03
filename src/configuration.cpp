@@ -1,7 +1,6 @@
 #include "configuration.hpp"
 
-const std::string WINDOW_NAME = "mc-shell-main-window";
-const std::string APPLICATION_ID = "se.simonwendel.mc-shell";
+using namespace Constants;
 
 Configuration::Configuration(const std::string &window_title, const std::string window_icon)
     : window_title(window_title),

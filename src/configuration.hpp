@@ -2,6 +2,7 @@
 #define CONFIGURATION_HPP
 
 #include <string>
+#include "constants.h"
 
 class Configuration
 {

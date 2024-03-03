@@ -1,11 +1,10 @@
 #include "application.hpp"
+#include "constants.h"
 #include "configuration.hpp"
 #include "terminal-widget.hpp"
 #include "terminal-settings.hpp"
 
-const std::string WINDOW_TITLE = "Midnight Commander";
-const std::string WINDOW_ICON = "MidnightCommander";
-const std::string CONSOLE_COMMAND = "/usr/bin/mc";
+using namespace Constants;
 
 int main(int argc, char *argv[])
 {
