@@ -6,11 +6,15 @@ if(NOT DEFINED MC_PATH)
 endif()
 
 find_program(MC "${MC_PATH}" REQUIRED)
-
 message(STATUS "Using Midnight Commander binary: ${MC}")
-configure_file("${CMAKE_CURRENT_LIST_DIR}/src/constants-impl.hpp.in" "${CMAKE_CURRENT_LIST_DIR}/src/constants-impl.hpp" @ONLY)
 
-file(GLOB SOURCES "src/*.cpp" "src/*.h")
+configure_file(
+    "${CMAKE_SOURCE_DIR}/src/constants-impl.hpp.in" 
+    "${CMAKE_BINARY_DIR}/src/constants-impl.hpp" 
+    @ONLY)
+
+
+file(GLOB SOURCES "src/*.cpp" "src/*.hpp" "${CMAKE_BINARY_DIR}/src/*.hpp")
 add_executable(mc-shell ${SOURCES})
 
 set_target_properties(mc-shell PROPERTIES
