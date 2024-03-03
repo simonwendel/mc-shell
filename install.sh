@@ -7,4 +7,5 @@ fi
 pushd build
 cmake ..
 cmake --build . --config Release
+sudo cmake --install . --config Release
 popd
