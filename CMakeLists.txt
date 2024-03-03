@@ -6,7 +6,7 @@ file(GLOB SOURCES "src/*.cpp" "src/*.h")
 add_executable(mc-shell ${SOURCES})
 
 set_target_properties(mc-shell PROPERTIES
-    CXX_STANDARD 11
+    CXX_STANDARD 20
     CXX_STANDARD_REQUIRED True
 )
 
