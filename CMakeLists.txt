@@ -32,3 +32,6 @@ pkg_check_modules(VTE vte-2.91 REQUIRED)
 
 target_include_directories(mc-shell PUBLIC ${CMAKE_BINARY_DIR}/src ${GTKMM_INCLUDE_DIRS} ${VTE_INCLUDE_DIRS})
 target_link_libraries(mc-shell ${GTKMM_LIBRARIES} ${VTE_LIBRARIES})
+
+install(TARGETS mc-shell DESTINATION bin)
+install(FILES ${CMAKE_BINARY_DIR}/install/mc-shell.desktop DESTINATION share/applications)
