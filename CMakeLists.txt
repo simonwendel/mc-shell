@@ -18,7 +18,8 @@ configure_file(
     "${CMAKE_BINARY_DIR}/install/mc-shell.desktop" 
     @ONLY)
 
-file(GLOB SOURCES "src/*.cpp" "src/*.hpp" "${CMAKE_BINARY_DIR}/src/*.hpp")
+include_directories("${CMAKE_BINARY_DIR}/src")    
+file(GLOB SOURCES "src/*.cpp")
 add_executable(mc-shell ${SOURCES})
 
 set_target_properties(mc-shell PROPERTIES
