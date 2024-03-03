@@ -3,3 +3,4 @@
 build/
 constants-impl.hpp
 mc-shell.desktop
+*.deb
